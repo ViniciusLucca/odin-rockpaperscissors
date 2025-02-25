@@ -27,6 +27,7 @@ function getPlayerChoice() {
     do {
         choice = (window.prompt("Choose: Rock, Paper, Scissors")).toLowerCase();
     } while (choice != "rock" && choice != "paper" && choice != "scissors");
+    return choice;
 }
 
 // Players score values
