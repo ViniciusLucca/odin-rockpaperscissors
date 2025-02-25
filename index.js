@@ -9,7 +9,7 @@ function getComputerChoice() {
 }
 
 // Human's choice
-function getPlayerChoice(){
+function getPlayerChoice() {
     // - Get user input
     // - Lowercase text
     // - If word is not one of: "Rock", "Paper", "Scissors"
@@ -17,7 +17,7 @@ function getPlayerChoice(){
     // - Else
     // --- Return user's lowercased input
     let choice;
-    do{
+    do {
         choice = (window.prompt("Choose: Rock, Paper, Scissors")).toLowerCase();
     } while (choice != "rock" && choice != "paper" && choice != "scissors");
 }
@@ -32,14 +32,14 @@ function playRound(humanChoice, computerChoice) {
     // - Get Computer and User choices
     computerChoice = getComputerChoice();
     humanChoice = getPlayerChoice();
-    
+
     // - Compare choices
     /* We concatenate both strings and throw them 
-    into 1 variable to compare the game results as words
-    It's easier than using a bunch of if's, else's and switchcases
-    */
+         into 1 variable to compare the game results as words
+         It's easier than using a bunch of if's, else's and switchcases
+     */
     let game = computerChoice + humanChoice;
-    
+
     //Check if computer won (player lost)
     if (game == "paperrock" || game == "rockscissors" || game == "scissorspaper") {
         console.log("Defeat!");
