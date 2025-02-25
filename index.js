@@ -1,11 +1,11 @@
 // Computer's choice
-function getComputerChoice(){
+function getComputerChoice() {
     // - Randomly generate choice
     let randomNumber = Math.random();
     // - Return one of three: "Rock", "Paper", "Scissors" 
-    if(randomNumber > 0) return "rock";
-    else if(randomNumber == 0) return "paper";
-    else if(randomNumber < 0) return "scissors";
+    if (randomNumber > 0) return "rock";
+    else if (randomNumber == 0) return "paper";
+    else if (randomNumber < 0) return "scissors";
 }
 
 // Human's choice
@@ -28,8 +28,29 @@ let computerScore = 0;
 let playerScore = 0;
 
 // Logic to play 1 round
-// - Get Computer and User choices
-// - Compare choices
+function playRound(humanChoice, computerChoice) {
+    // - Get Computer and User choices
+    computerChoice = getComputerChoice();
+    humanChoice = getPlayerChoice();
+    
+    // - Compare choices
+    /* We concatenate both strings and throw them 
+    into 1 variable to compare the game results as words
+    It's easier than using a bunch of if's, else's and switchcases
+    */
+    let game = computerChoice + humanChoice;
+    
+    //Check if computer won (player lost)
+    if (game == "paperrock" || game == "rockscissors" || game == "scissorspaper") {
+        console.log("Defeat!");
+        computerScore++;
+    } else if (computerChoice == humanChoice) { //Check if it was a tie
+        console.log("Tie!");
+    } else { //if it wasn't a tie, neither a loss, it's a win.
+        console.log("Victory!");
+        playerScore++;
+    }
+}
 // - Increase winner's score by 1
 
 // Logic to play 5 rounds
