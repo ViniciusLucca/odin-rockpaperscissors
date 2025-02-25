@@ -66,4 +66,9 @@ function playGame(){
     for(let i = 0; i < 5; i++){
         playRound(getPlayerChoice(), getComputerChoice());
     }
+
+    // Print winner
+    console.log(`Your score: ${playerScore}`);
+    console.log(`Computer's score: ${computerScore}`);
+    console.log(playerScore > computerScore ? `You win!` : `You lose, better luck next time!`);
 }
