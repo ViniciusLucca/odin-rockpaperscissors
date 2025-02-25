@@ -1,11 +1,18 @@
 // Computer's choice
 function getComputerChoice() {
     // - Randomly generate choice
-    let randomNumber = Math.random();
+    /* The number generated between 0 and 1 will get 
+    multiplied by 3 and rounded to the its predecessor
+    - if the number is less than 0.333, the result will be 0
+    - else, if the number is less than 0.666, the result will be 1
+    - else, the result will be 2
+    */
+    let randomNumber = Math.floor(Math.random() * 3);
+
     // - Return one of three: "Rock", "Paper", "Scissors" 
-    if (randomNumber > 0) return "rock";
-    else if (randomNumber == 0) return "paper";
-    else if (randomNumber < 0) return "scissors";
+    if (randomNumber == 0) return "rock";
+    else if (randomNumber == 1) return "paper";
+    else if (randomNumber == 2) return "scissors";
 }
 
 // Human's choice
