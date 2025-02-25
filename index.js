@@ -1,6 +1,13 @@
 // Computer's choice
-// - Randomly generate choice
-// - Return one of three: "Rock", "Paper", "Scissors" 
+function getComputerChoice(){
+    // - Randomly generate choice
+    let randomNumber = Math.random();
+    // - Return one of three: "Rock", "Paper", "Scissors" 
+    if(randomNumber > 0) return "Rock";
+    else if(randomNumber == 0) return "Paper";
+    else if(randomNumber < 0) return "Scissors";
+}
+
 
 // Human's choice
 // - Get user input
@@ -12,6 +19,8 @@
 
 // Players score values
 // - Declare variables for Computer and User's scores 
+let computerScore = 0;
+let playerScore = 0;
 
 // Logic to play 1 round
 // - Get Computer and User choices
