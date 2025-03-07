@@ -1,3 +1,6 @@
+let computerScore = 0;
+let playerScore = 0;
+
 // Computer's choice
 function getComputerChoice() {
     // - Randomly generate choice
@@ -30,37 +33,34 @@ function getPlayerChoice() {
     return choice;
 }
 
+// Logic to play 1 round
+function playRound(humanSelection, computerSelection) {
+    /* We concatenate both strings and throw them 
+    into 1 variable to compare the game results as words
+    It's easier than using a bunch of if's, else's and switchcases
+    */
+    let game = computerSelection + humanSelection;
+    console.log(`Your choice: ${humanSelection}`);
+    console.log(`Computer's choice: ${computerSelection}`);
+    
+    //Check if computer won (player lost)
+    if (game == "paperrock" || game == "rockscissors" || game == "scissorspaper") {
+        console.log("Defeat!");
+        computerScore++;
+    } else if (computerSelection == humanSelection) { //Check if it was a tie
+        console.log("Tie!");
+    } else { //if it wasn't a tie, neither a loss, it's a win.
+        console.log("Victory!");
+        playerScore++;
+    }
+}
+
 // Logic to play 5 rounds
 function playGame(){
-    // Players score values
-    let computerScore = 0;
-    let playerScore = 0;
-    // Logic to play 1 round
-    
-    function playRound(humanSelection, computerSelection) {
-        /* We concatenate both strings and throw them 
-        into 1 variable to compare the game results as words
-        It's easier than using a bunch of if's, else's and switchcases
-        */
-        let game = computerSelection + humanSelection;
-        console.log(`Your choice: ${humanSelection}`);
-        console.log(`Computer's choice: ${computerSelection}`);
-        
-        // - Compare choices
 
-        //Check if computer won (player lost)
-        if (game == "paperrock" || game == "rockscissors" || game == "scissorspaper") {
-            console.log("Defeat!");
-            // - Increase winner's score by 1
-            computerScore++;
-        } else if (computerSelection == humanSelection) { //Check if it was a tie
-            console.log("Tie!");
-        } else { //if it wasn't a tie, neither a loss, it's a win.
-            console.log("Victory!");
-            // - Increase winner's score by 1
-            playerScore++;
-        }
-    }
+    // Reset player's scores
+    computerScore = 0;
+    playerScore = 0;
     
     // - Repeat [Logic to play 1 round] 5 times
     for(let i = 0; i < 5; i++){
