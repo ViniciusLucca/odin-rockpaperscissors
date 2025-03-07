@@ -63,9 +63,9 @@ function playGame(){
     playerScore = 0;
     
     // - Repeat [Logic to play 1 round] 5 times
-    for(let i = 0; i < 5; i++){
-        playRound(getPlayerChoice(), getComputerChoice());
-    }
+    // for(let i = 0; i < 5; i++){
+    //     playRound(getPlayerChoice(), getComputerChoice());
+    // }
 
     // Print winner
     console.log(`Your score: ${playerScore}`);
