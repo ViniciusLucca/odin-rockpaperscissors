@@ -1,6 +1,11 @@
 let computerScore = 0;
 let playerScore = 0;
 
+let buttons = document.querySelectorAll('button');
+buttons.forEach(button => {
+    button.addEventListener('click', playRound);
+});
+
 // Computer's choice
 function getComputerChoice() {
     // - Randomly generate choice
@@ -40,17 +45,18 @@ function playRound(humanSelection, computerSelection) {
     It's easier than using a bunch of if's, else's and switchcases
     */
     let game = computerSelection + humanSelection;
-    console.log(`Your choice: ${humanSelection}`);
-    console.log(`Computer's choice: ${computerSelection}`);
+    const feedback = document.querySelector('#gameFeedback');
+    feedback.textContent = (`Your choice: ${humanSelection}`);
+    feedback.textContent += (`\nComputer's choice: ${computerSelection}`);
     
     //Check if computer won (player lost)
     if (game == "paperrock" || game == "rockscissors" || game == "scissorspaper") {
-        console.log("Defeat!");
+        feedback.textContent += ("\nDefeat!");
         computerScore++;
     } else if (computerSelection == humanSelection) { //Check if it was a tie
-        console.log("Tie!");
+        feedback.textContent += ("\nTie!");
     } else { //if it wasn't a tie, neither a loss, it's a win.
-        console.log("Victory!");
+        feedback.textContent += ("\nVictory!");
         playerScore++;
     }
 }
@@ -61,6 +67,8 @@ function playGame(){
     // Reset player's scores
     computerScore = 0;
     playerScore = 0;
+
+    const result = document.querySelector('#results');
     
     // - Repeat [Logic to play 1 round] 5 times
     // for(let i = 0; i < 5; i++){
@@ -68,7 +76,7 @@ function playGame(){
     // }
 
     // Print winner
-    console.log(`Your score: ${playerScore}`);
-    console.log(`Computer's score: ${computerScore}`);
-    console.log(playerScore > computerScore ? `You win!` : `You lose, better luck next time!`);
+    result.textContent = (`Your score: ${playerScore}`);
+    result.textContent += (`\nComputer's score: ${computerScore}`);
+    result.textContent += (playerScore > computerScore ? `\nYou win!` : `\nYou lose, better luck next time!`);
 }
