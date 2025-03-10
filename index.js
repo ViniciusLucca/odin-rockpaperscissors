@@ -47,6 +47,8 @@ function playRound(humanSelection, computerSelection) {
     */
     let game = computerSelection + humanSelection;
     
+    result.childNodes.forEach(child => child.textContent = '');
+
     feedback.textContent = (`Your choice: ${humanSelection}`);
     feedback.textContent += (`Computer's choice: ${computerSelection}`);
     //Check if computer won (player lost)
@@ -59,7 +61,7 @@ function playRound(humanSelection, computerSelection) {
         feedback.textContent += ("Victory!");
         playerScore++;
     }
-    if (playerScore >=5 || computerScore >= 5) endGame();
+    if (playerScore ==5 || computerScore >= 5) endGame();
 }
 
 function endGame(){
