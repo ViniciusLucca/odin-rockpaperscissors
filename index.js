@@ -49,19 +49,19 @@ function playRound(humanSelection, computerSelection) {
     
     result.childNodes.forEach(child => child.textContent = '');
 
-    feedback.textContent = (`Your choice: ${humanSelection}`);
-    feedback.textContent += (`Computer's choice: ${computerSelection}`);
+    document.querySelector('#playerChoice').textContent = (`Your choice: ${humanSelection}`);
+    document.querySelector('#computerChoice').textContent = (`Computer's choice: ${computerSelection}`);
     //Check if computer won (player lost)
     if (game == "paperrock" || game == "rockscissors" || game == "scissorspaper") {
-        feedback.textContent += ("Defeat!");
+        document.querySelector('#roundWinner').textContent = ("Defeat!");
         computerScore++;
     } else if (computerSelection == humanSelection) { //Check if it was a tie
-        feedback.textContent += ("Tie!");
+        document.querySelector('#roundWinner').textContent = ("Tie!");
     } else { //if it wasn't a tie, neither a loss, it's a win.
-        feedback.textContent += ("Victory!");
+        document.querySelector('#roundWinner').textContent = ("Victory!");
         playerScore++;
     }
-    if (playerScore ==5 || computerScore >= 5) endGame();
+    if (playerScore == 5 || computerScore >= 5) endGame();
 }
 
 function endGame(){
