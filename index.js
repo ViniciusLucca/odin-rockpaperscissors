@@ -1,9 +1,10 @@
 let computerScore = 0;
 let playerScore = 0;
-
+const result = document.querySelector('#results');
+const feedback = document.querySelector('#gameFeedback');
 let buttons = document.querySelectorAll('button');
 buttons.forEach(button => {
-    button.addEventListener('click', playRound);
+    button.addEventListener('click', () => playRound(button.value, getComputerChoice()));
 });
 
 // Computer's choice
@@ -45,20 +46,30 @@ function playRound(humanSelection, computerSelection) {
     It's easier than using a bunch of if's, else's and switchcases
     */
     let game = computerSelection + humanSelection;
-    const feedback = document.querySelector('#gameFeedback');
-    feedback.textContent = (`Your choice: ${humanSelection}`);
-    feedback.textContent += (`\nComputer's choice: ${computerSelection}`);
     
+    feedback.textContent = (`Your choice: ${humanSelection}`);
+    feedback.textContent += (`Computer's choice: ${computerSelection}`);
     //Check if computer won (player lost)
     if (game == "paperrock" || game == "rockscissors" || game == "scissorspaper") {
-        feedback.textContent += ("\nDefeat!");
+        feedback.textContent += ("Defeat!");
         computerScore++;
     } else if (computerSelection == humanSelection) { //Check if it was a tie
-        feedback.textContent += ("\nTie!");
+        feedback.textContent += ("Tie!");
     } else { //if it wasn't a tie, neither a loss, it's a win.
-        feedback.textContent += ("\nVictory!");
+        feedback.textContent += ("Victory!");
         playerScore++;
     }
+    if (playerScore >=5 || computerScore >= 5) endGame();
+}
+
+function endGame(){
+    
+    result.querySelector('#playerScore').textContent = (`Your score: ${playerScore}`);
+    result.querySelector('#computerScore').textContent = (`Computer's score: ${computerScore}`);
+    result.querySelector('#finalMessage').textContent = (playerScore > computerScore ? `You win!` : `You lose, better luck next time!`);
+    
+    computerScore = 0;
+    playerScore = 0;
 }
 
 // Logic to play 5 rounds
